@@ -1,0 +1,16 @@
+.navHeader {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  padding: 20px;
+  font-weight: 700;
+  background-color: #ea425b;
+  margin: 0;
+}
+.link {
+  color: aliceblue;
+  font-weight: bold;
+}
+.activeLink {
+  color: black;
+}

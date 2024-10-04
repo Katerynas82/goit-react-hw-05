@@ -1,0 +1,13 @@
+.navigate{
+display: flex;
+
+}
+.block{
+    text-align: center;
+}
+p{
+    font-size: large;
+    color: rgb(12, 12, 12);
+    padding-left: 25px;
+   }
+  
