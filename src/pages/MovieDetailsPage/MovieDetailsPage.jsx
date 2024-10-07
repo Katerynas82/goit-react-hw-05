@@ -1,14 +1,16 @@
-import { Suspense, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Suspense, useEffect, useState, useRef } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { fetchMovieDetails, getMovieImageUrl } from "../../services/api";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import s from '../MovieDetailsPage/MovieDetailPage.module.css';
+import s from "../MovieDetailsPage/MovieDetailPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const previousLocation = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -31,7 +33,9 @@ const MovieDetailsPage = () => {
       <div className={s.block}>
         <h1>{movie.title}</h1>
         <p>{movie.overview}</p>
-        <button onClick={() => navigate(-1)}>Go Back</button>
+        <button onClick={() => navigate(previousLocation.current)}>
+          Go Back
+        </button>
         <nav className={s.navigate}>
           <Link to="cast">
             <p>Cast</p>
